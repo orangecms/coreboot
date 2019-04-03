@@ -1,0 +1,9 @@
+Category: laptop
+Board URL: https://www.gigabyte.com/Laptop/P34G-v2
+Board name: P34G v2 GA-R3456R
+Vendor name: GIGABYTE
+ROM package: SOIC-8
+ROM protocol: SPI
+ROM socketed: n
+Flashrom support: y
+Release year: 2013
