@@ -1,5 +1,5 @@
-Category: server
-Board URL: https://www.supermicro.com/products/motherboard/xeon/c220/x10slm_-f.cfm
+Category: laptop
+Board URL: https://www.gigabyte.com/Laptop/P34G-v2
 ROM package: SOIC-8
 ROM protocol: SPI
 ROM socketed: n
