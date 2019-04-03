@@ -25,10 +25,7 @@ DefinitionBlock(
 )
 {
 	// Some generic macros
-	#include "acpi/platform.asl"
-
-	// Thermal handler
-	#include "acpi/thermal.asl"
+	#include <southbridge/intel/lynxpoint/acpi/platform.asl>
 
 	// global NVS and variables
 	#include <southbridge/intel/lynxpoint/acpi/globalnvs.asl>
@@ -45,9 +42,6 @@ DefinitionBlock(
 			#include <drivers/intel/gma/acpi/default_brightness_levels.asl>
 		}
 	}
-
-	// Mainboard devices
-	#include "acpi/mainboard.asl"
 
 	// Chipset specific sleep states
 	#include <southbridge/intel/lynxpoint/acpi/sleepstates.asl>
