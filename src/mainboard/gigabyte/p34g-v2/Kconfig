@@ -1,0 +1,55 @@
+if BOARD_GIGABYTE_P34G_V2
+
+config BOARD_SPECIFIC_OPTIONS
+	def_bool y
+	select CPU_INTEL_HASWELL
+	select NORTHBRIDGE_INTEL_HASWELL
+	select SOUTHBRIDGE_INTEL_LYNXPOINT
+	select INTEL_INT15
+	select INTEL_GMA_HAVE_VBT
+	select BOARD_ROMSIZE_KB_8192
+	select HAVE_ACPI_TABLES
+	select HAVE_ACPI_RESUME
+	select EC_ACPI
+	select SUPERIO_ITE_IT8587E
+	select MAINBOARD_HAS_LIBGFXINIT
+	select SERIRQ_CONTINUOUS_MODE
+	select SYSTEM_TYPE_LAPTOP
+	select TSC_MONOTONIC_TIMER
+
+config MAINBOARD_DIR
+	string
+	default gigabyte/p34g-v2
+
+config GFX_GMA_CPU_VARIANT
+	string
+	default "Normal"
+
+config MAINBOARD_PART_NUMBER
+	string
+	default "P34G_V2"
+
+config VGA_BIOS_FILE
+	string
+	default "pci8086,0416.rom"
+
+config VGA_BIOS_ID
+	string
+	default "8086,0416"
+
+config MAINBOARD_PCI_SUBSYSTEM_DEVICE_ID
+	hex
+	default 0xa456
+
+config MAINBOARD_PCI_SUBSYSTEM_VENDOR_ID
+	hex
+	default 0x1458
+
+config MAX_CPUS
+	int
+	default 8
+
+config USBDEBUG_HCD_INDEX # FIXME: check this
+	int
+	default 2
+endif
