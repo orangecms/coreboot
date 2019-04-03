@@ -60,7 +60,7 @@ void mainboard_romstage_entry(unsigned long bist)
 		.temp_mmio_base = 0xfed08000,
 		.system_type = 1, /* desktop/server, FIXME: check this */
 		.tseg_size = CONFIG_SMM_TSEG_SIZE,
-		.spd_addresses = { 0xa0, 0xa2, 0xa4, 0xa6 }, /* FIXME: check this */
+		.spd_addresses = { 0x50, 0x52 },
 		.ec_present = 0,
 		.dimm_channel0_disabled = 0, /* FIXME: leave channel 0 enabled */
 		.dimm_channel1_disabled = 0, /* FIXME: leave channel 1 enabled */
