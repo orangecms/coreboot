@@ -1,61 +1,53 @@
-##
-## This file is part of the coreboot project.
-##
-## Copyright (C) 2018 Tristan Corrick <tristan@corrick.kiwi>
-##
-## This program is free software: you can redistribute it and/or modify
-## it under the terms of the GNU General Public License as published by
-## the Free Software Foundation, either version 2 of the License, or
-## (at your option) any later version.
-##
-## This program is distributed in the hope that it will be useful,
-## but WITHOUT ANY WARRANTY; without even the implied warranty of
-## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-## GNU General Public License for more details.
-##
-
-if BOARD_SUPERMICRO_X10SLM_PLUS_F
+if BOARD_GIGABYTE_P34V2
 
 config BOARD_SPECIFIC_OPTIONS
 	def_bool y
-	select BOARD_ROMSIZE_KB_8192
+	select BOARD_ROMSIZE_KB_2048 # FIXME: correct this
 	select CPU_INTEL_HASWELL
+	select EC_ACPI
 	select HAVE_ACPI_RESUME
 	select HAVE_ACPI_TABLES
-	select HAVE_OPTION_TABLE
-	select HAVE_CMOS_DEFAULT
+	select INTEL_INT15
+	select MAINBOARD_HAS_LIBGFXINIT # FIXME: check this
 	select NORTHBRIDGE_INTEL_HASWELL
 	select SERIRQ_CONTINUOUS_MODE
 	select SOUTHBRIDGE_INTEL_LYNXPOINT
-        ## TODO: find EC
-	#select SUPERIO_NUVOTON_NCT6776
-	#select SUPERIO_NUVOTON_NCT6776_COM_A
+	select SYSTEM_TYPE_LAPTOP
 	select TSC_MONOTONIC_TIMER
-
-config CBFS_SIZE
-	hex
-	default 0x100000
 
 config MAINBOARD_DIR
 	string
-	default "gigabyte/p34v2"
+	default gigabyte/p34v2
+
+config GFX_GMA_CPU_VARIANT
+	string
+	default "Normal"
 
 config MAINBOARD_PART_NUMBER
 	string
 	default "P34V2"
 
+config VGA_BIOS_FILE
+	string
+	default "pci8086,0416.rom"
+
+config VGA_BIOS_ID
+	string
+	default "8086,0416"
+
 config MAINBOARD_PCI_SUBSYSTEM_DEVICE_ID
 	hex
-        # TODO
-	default 0x0803
+	default 0xa456
 
 config MAINBOARD_PCI_SUBSYSTEM_VENDOR_ID
 	hex
-        # TODO
-	default 0x15d9
+	default 0x1458
 
 config MAX_CPUS
 	int
-	default 4
+	default 8
 
+config USBDEBUG_HCD_INDEX # FIXME: check this
+	int
+	default 2
 endif
