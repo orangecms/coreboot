@@ -1,2 +1,7 @@
 Category: laptop
-FIXME: put ROM package, ROM socketed, ROM protocol, Flashrom support, Release year
+Board URL: https://www.gigabyte.com/Laptop/P34G-v2
+ROM package: SOIC-8
+ROM protocol: SPI
+ROM socketed: n
+Flashrom support: y
+Release year: 2013
