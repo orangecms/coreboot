@@ -62,8 +62,12 @@ void mainboard_romstage_entry(unsigned long bist)
 		.tseg_size = CONFIG_SMM_TSEG_SIZE,
 		.spd_addresses = { 0x50, 0x52 },
 		.ec_present = 0,
-		.dimm_channel0_disabled = 0, /* FIXME: leave channel 0 enabled */
-		.dimm_channel1_disabled = 0, /* FIXME: leave channel 1 enabled */
+		// 0 = leave channel enabled
+		// 1 = disable dimm 0 on channel
+		// 2 = disable dimm 1 on channel
+		// 3 = disable dimm 0+1 on channel
+		.dimm_channel0_disabled = 2, /* FIXME: leave channel 0 enabled */
+		.dimm_channel1_disabled = 2, /* FIXME: leave channel 1 enabled */
 		.max_ddr3_freq = 1600,
 		.usb2_ports = {
 			/* Length, Enable, OCn#, Location */
