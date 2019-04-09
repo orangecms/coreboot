@@ -19,7 +19,7 @@
 #include <cpu/intel/romstage.h>
 #include <cpu/intel/haswell/haswell.h>
 #include <northbridge/intel/haswell/haswell.h>
-#include <northbridge/intel/haswell/pei_data.h>
+#include <northbridge/intel/haswell/raminit.h>
 #include <southbridge/intel/common/gpio.h>
 #include <southbridge/intel/lynxpoint/pch.h>
 
@@ -105,5 +105,9 @@ void mainboard_romstage_entry(unsigned long bist)
 		.bist = bist,
 	};
 
+	/* SuperIO */
+	pch_enable_lpc();
+
+	/* Main romstage entry */
 	romstage_common(&romstage_params);
 }
