@@ -95,11 +95,27 @@ chip northbridge/intel/haswell # FIXME: check gfx.ndid and gfx.did
 				chip superio/smsc/smscsuperio
 					# TODO: keyboard, mouse, fans...
 					# device ... end
-					device pnp 2e.7 on # FIXME: works?
+					# 0x4e according to superiotool.log
+					# see src/mainboard/lippert/frontrunner-af/devicetree.cb
+					device pnp 4e.0 off end		# Floppy
+					device pnp 4e.3 off end		# Parallel Port
+					device pnp 4e.4 on		# COM1
+						io 0x60 = 0x3f8
+						irq 0x70 = 4
+					end
+					device pnp 4e.5 on		# COM2
+						io 0x60 = 0x2f8
+						irq 0x70 = 3
+					end
+					device pnp 4e.7 on # FIXME: works?
 						io 0x60 = 0x60
 						io 0x62 = 0x64
 						irq 0x70 = 1
 						irq 0x72 = 12
+					end
+					device pnp 4e.A on		# Runtime Regs
+						io 0x60 = 0x0E00
+						drq 0xF0 = 0x0B # no 32kHz
 					end
 				end
 			end
