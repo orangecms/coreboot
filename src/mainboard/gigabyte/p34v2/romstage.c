@@ -22,6 +22,8 @@
 #include <northbridge/intel/haswell/raminit.h>
 #include <southbridge/intel/common/gpio.h>
 #include <southbridge/intel/lynxpoint/pch.h>
+// TODO: ?
+// #include <superio/smsc/lpc47n217/lpc47n217.h>
 
 // root complex base addresses
 static const struct rcba_config_instruction rcba_config[] = {
@@ -80,7 +82,7 @@ void mainboard_romstage_entry(unsigned long bist)
 		.pmbase = DEFAULT_PMBASE,
 		.gpiobase = DEFAULT_GPIOBASE,
 		.temp_mmio_base = 0xfed08000,
-		.system_type = 1, /* desktop/server, FIXME: check this */
+		.system_type = 1, /* desktop/server */
 		.tseg_size = CONFIG_SMM_TSEG_SIZE,
 		// left-shifted by 1 for mrc.bin
 		.spd_addresses = { 0xa0, 0x00, 0xa4, 0x00 },
@@ -89,8 +91,8 @@ void mainboard_romstage_entry(unsigned long bist)
 		// 1 = disable dimm 0 on channel
 		// 2 = disable dimm 1 on channel
 		// 3 = disable dimm 0+1 on channel
-		.dimm_channel0_disabled = 2, /* FIXME: leave channel 0 enabled */
-		.dimm_channel1_disabled = 2, /* FIXME: leave channel 1 enabled */
+		.dimm_channel0_disabled = 2,
+		.dimm_channel1_disabled = 2,
 		.max_ddr3_freq = 1600,
 		.usb2_ports = {
 			/* Length, Enable, OCn#, Location */
