@@ -965,8 +965,16 @@ static void lpc_final(struct device *dev)
 	RCBA32(0x3898) = SPI_OPMENU_LOWER;
 	RCBA32(0x389c) = SPI_OPMENU_UPPER;
 
-	if (acpi_is_wakeup_s3() || CONFIG(INTEL_CHIPSET_LOCKDOWN))
+	if (acpi_is_wakeup_s3() || CONFIG(INTEL_CHIPSET_LOCKDOWN)) {
 		outb(APM_CNT_FINALIZE, APM_CNT);
+		if (CONFIG(CONSOLE_SPI_FLASH)) {
+			/* Re-init SPI driver to handle locked BAR.
+			   This prevents flashconsole from hanging.
+			   If other code needs to use SPI during
+			   ramstage, whitelist it here. */
+			spi_init();
+                }
+        }
 }
 
 static struct pci_operations pci_ops = {
