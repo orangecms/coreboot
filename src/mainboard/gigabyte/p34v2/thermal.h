@@ -22,19 +22,19 @@
 #define FAN4_THRESHOLD_ON	0
 
 /* Fan is at LOW speed */
-#define FAN3_THRESHOLD_OFF	44
-#define FAN3_THRESHOLD_ON	48
+#define FAN3_THRESHOLD_OFF	40
+#define FAN3_THRESHOLD_ON	44
 
 /* Fan is at MEDIUM speed */
-#define FAN2_THRESHOLD_OFF	48
-#define FAN2_THRESHOLD_ON	54
+#define FAN2_THRESHOLD_OFF	44
+#define FAN2_THRESHOLD_ON	48
 
 /* Fan is at HIGH speed */
-#define FAN1_THRESHOLD_OFF	60
-#define FAN1_THRESHOLD_ON	64
+#define FAN1_THRESHOLD_OFF	48
+#define FAN1_THRESHOLD_ON	54
 
 /* Fan is at FULL speed */
-#define FAN0_THRESHOLD_OFF	66
+#define FAN0_THRESHOLD_OFF	54
 #define FAN0_THRESHOLD_ON	78
 
 /* Temperature which OS will shutdown at */
