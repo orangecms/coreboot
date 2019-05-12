@@ -30,8 +30,13 @@ DefinitionBlock(
 {
 	/* Some generic macros */
 	#include "acpi/platform.asl"
+
+	/* Thermal handler */
+	// TODO: #include "acpi/thermal.asl"
+
 	#include <cpu/intel/common/acpi/cpu.asl>
 	#include <southbridge/intel/lynxpoint/acpi/platform.asl>
+
 	/* global NVS and variables. */
 	#include <southbridge/intel/lynxpoint/acpi/globalnvs.asl>
 	#include <southbridge/intel/lynxpoint/acpi/sleepstates.asl>
