@@ -41,7 +41,7 @@ static void acpi_update_thermal_table(global_nvs_t *gnvs)
 	gnvs->tcrt = CRITICAL_TEMPERATURE;
 	gnvs->tpsv = PASSIVE_TEMPERATURE;
 	gnvs->tmax = MAX_TEMPERATURE;
-	gnvs->flvl = 5;
+	gnvs->flvl = 5;                     // Fan level
 }
 
 /* FIXME: check this function.  */
@@ -60,8 +60,8 @@ void acpi_create_gnvs(global_nvs_t *gnvs)
 	// the lid is open by default.
 	gnvs->lids = 1;
 
-	gnvs->tcrt = 100;
-	gnvs->tpsv = 90;
+	gnvs->tcrt = CRITICAL_TEMPERATURE;
+	gnvs->tpsv = PASSIVE_TEMPERATURE;
 
 	acpi_update_thermal_table(gnvs);
 }
