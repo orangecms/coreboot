@@ -31,8 +31,12 @@ DefinitionBlock(
 	/* Some generic macros */
 	#include "acpi/platform.asl"
 
+	/* Super I/O, EC */
+	#include "acpi/superio.asl"
+	#include "acpi/ec.asl"
+
 	/* Thermal handler */
-	// TODO: #include "acpi/thermal.asl"
+	#include "acpi/thermal.asl"
 
 	#include <cpu/intel/common/acpi/cpu.asl>
 	#include <southbridge/intel/lynxpoint/acpi/platform.asl>
