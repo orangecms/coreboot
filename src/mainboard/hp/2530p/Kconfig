@@ -1,0 +1,53 @@
+#
+# This file is part of the coreboot project.
+#
+# Copyright (C) 2017 Iru Cai <mytbk920423@gmail.com>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; version 2 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+
+if BOARD_HP_2530P
+
+#        select EC_ACPI ?
+#	select USE_NATIVE_RAMINIT ?
+#	SUPERIO_SMSC_KBC1100 ?
+config BOARD_SPECIFIC_OPTIONS
+	def_bool y
+	select SYSTEM_TYPE_LAPTOP
+        select CPU_INTEL_SOCKET_BGA956
+	select BOARD_ROMSIZE_KB_4096
+	select NORTHBRIDGE_INTEL_GM45
+	select SOUTHBRIDGE_INTEL_I82801IX
+	select HAVE_ACPI_TABLES
+	select HAVE_OPTION_TABLE
+	select HAVE_CMOS_DEFAULT
+	select HAVE_ACPI_RESUME
+	select INTEL_INT15
+	select GFX_GMA_INTERNAL_IS_LVDS
+        select EC_HP_KBC1126
+	select MAINBOARD_HAS_LIBGFXINIT
+	select MAINBOARD_USES_IFD_GBE_REGION
+
+config MAINBOARD_DIR
+	string
+	default hp/2530p
+
+config MAINBOARD_PART_NUMBER
+	string
+	default "EliteBook 2530p"
+
+config USBDEBUG_HCD_INDEX
+	int
+	default 2
+
+config MAX_CPUS
+	int
+	default 2
+endif

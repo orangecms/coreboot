@@ -1,0 +1,2 @@
+config BOARD_HP_2530P
+	bool "EliteBook 2530p"
