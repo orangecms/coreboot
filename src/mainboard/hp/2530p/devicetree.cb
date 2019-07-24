@@ -153,20 +153,10 @@ chip northbridge/intel/gm45
 				subsystemid 0x103c 0x30e1
 				ioapic_irq 2 INTA 0x21
 			end
+                        # from manual: Intel 82801DB/DBM SMBus Controller 24C3
 			device pci 1f.3 on # SMBus
-				subsystemid 0x17aa 0x20f9
-				ioapic_irq 2 INTC 0x12
-				# eeprom, 8 virtual devices, same chip
-				chip drivers/i2c/at24rf08c
-					device i2c 54 on end
-					device i2c 55 on end
-					device i2c 56 on end
-					device i2c 57 on end
-					device i2c 5c on end
-					device i2c 5d on end
-					device i2c 5e on end
-					device i2c 5f on end
-				end
+				subsystemid 0x103c 0x30e1
+				ioapic_irq 2 INTB 0x19
 			end
 			device pci 1f.5 off end # SATA/IDE 2
 			device pci 1f.6 off end # Thermal
