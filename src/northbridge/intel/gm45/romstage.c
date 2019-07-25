@@ -16,6 +16,7 @@
  */
 
 #include <cbmem.h>
+#include <cf9_reset.h>
 #include <romstage_handoff.h>
 #include <console/console.h>
 #include <device/pci_ops.h>
@@ -122,4 +123,6 @@ void mainboard_romstage_entry(unsigned long bist)
 	romstage_handoff_init(cbmem_initted && s3resume);
 
 	printk(BIOS_SPEW, "exit main()\n");
+
+        full_reset();
 }
