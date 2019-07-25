@@ -51,7 +51,6 @@ void mb_setup_superio(void)
 void get_mb_spd_addrmap(u8 *spd_addrmap)
 {
 	spd_addrmap[0] = 0x50;
-	spd_addrmap[2] = 0x51; // TODO: 0x52 ?
 }
 
 void mb_post_raminit_setup(void)
