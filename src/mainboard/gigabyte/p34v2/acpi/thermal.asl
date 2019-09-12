@@ -20,6 +20,87 @@ External (\PPKG, MethodObj)
 #define HAVE_THERMALZONE
 Scope (\_TZ)
 {
+        Name (ETMD, One)
+        Device (FAN0)
+        {
+            Name (_HID, EisaId ("PNP0C0B") /* Fan (Thermal Solution) */)  // _HID: Hardware ID
+            Name (_UID, Zero)  // _UID: Unique ID
+            Name (_PR0, Package (0x01)  // _PR0: Power Resources for D0
+            {
+                FNP0
+            })
+            Method (_DEP, 0, NotSerialized)  // _DEP: Dependencies
+            {
+                Return (Package (0x01)
+                {
+                    \_SB.PCI0.LPCB.EC0
+                })
+            }
+        }
+        Device (FAN1)
+        {
+            Name (_HID, EisaId ("PNP0C0B") /* Fan (Thermal Solution) */)  // _HID: Hardware ID
+            Name (_UID, One)  // _UID: Unique ID
+            Name (_PR0, Package (0x01)  // _PR0: Power Resources for D0
+            {
+                FNP1
+            })
+            Method (_DEP, 0, NotSerialized)  // _DEP: Dependencies
+            {
+                Return (Package (0x01)
+                {
+                    \_SB.PCI0.LPCB.EC0
+                })
+            }
+        }
+        Device (FAN2)
+        {
+            Name (_HID, EisaId ("PNP0C0B") /* Fan (Thermal Solution) */)  // _HID: Hardware ID
+            Name (_UID, One)  // _UID: Unique ID
+            Name (_PR0, Package (0x01)  // _PR0: Power Resources for D0
+            {
+                FNP2
+            })
+            Method (_DEP, 0, NotSerialized)  // _DEP: Dependencies
+            {
+                Return (Package (0x01)
+                {
+                    \_SB.PCI0.LPCB.EC0
+                })
+            }
+        }
+        Device (FAN3)
+        {
+            Name (_HID, EisaId ("PNP0C0B") /* Fan (Thermal Solution) */)  // _HID: Hardware ID
+            Name (_UID, One)  // _UID: Unique ID
+            Name (_PR0, Package (0x01)  // _PR0: Power Resources for D0
+            {
+                FNP3
+            })
+            Method (_DEP, 0, NotSerialized)  // _DEP: Dependencies
+            {
+                Return (Package (0x01)
+                {
+                    \_SB.PCI0.LPCB.EC0
+                })
+            }
+        }
+        Device (FAN4)
+        {
+            Name (_HID, EisaId ("PNP0C0B") /* Fan (Thermal Solution) */)  // _HID: Hardware ID
+            Name (_UID, One)  // _UID: Unique ID
+            Name (_PR0, Package (0x01)  // _PR0: Power Resources for D0
+            {
+                FNP4
+            })
+            Method (_DEP, 0, NotSerialized)  // _DEP: Dependencies
+            {
+                Return (Package (0x01)
+                {
+                    \_SB.PCI0.LPCB.EC0
+                })
+            }
+        }
 	ThermalZone (THRM)
 	{
 		Name (_TC1, 0x02)
