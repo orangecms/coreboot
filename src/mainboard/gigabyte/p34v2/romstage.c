@@ -16,7 +16,8 @@
  */
 
 #include <stdint.h>
-#include <cpu/intel/romstage.h>
+#include <arch/romstage.h>
+//#include <cpu/intel/romstage.h>
 #include <cpu/intel/haswell/haswell.h>
 #include <northbridge/intel/haswell/haswell.h>
 #include <northbridge/intel/haswell/raminit.h>
@@ -47,7 +48,7 @@ void mainboard_config_superio(void)
 {
 }
 
-void mainboard_romstage_entry(unsigned long bist)
+void mainboard_romstage_entry()
 {
 	struct pei_data pei_data = {
 		.pei_version = PEI_VERSION,
@@ -106,7 +107,6 @@ void mainboard_romstage_entry(unsigned long bist)
 		.pei_data = &pei_data,
 		.gpio_map = &mainboard_gpio_map,
 		.rcba_config = &rcba_config[0],
-		.bist = bist,
 	};
 
 	/* SuperIO */
