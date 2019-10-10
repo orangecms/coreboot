@@ -17,14 +17,11 @@
 
 #include <stdint.h>
 #include <arch/romstage.h>
-//#include <cpu/intel/romstage.h>
 #include <cpu/intel/haswell/haswell.h>
 #include <northbridge/intel/haswell/haswell.h>
 #include <northbridge/intel/haswell/raminit.h>
 #include <southbridge/intel/common/gpio.h>
 #include <southbridge/intel/lynxpoint/pch.h>
-// TODO: ?
-// #include <superio/smsc/lpc47n217/lpc47n217.h>
 
 // root complex base addresses
 static const struct rcba_config_instruction rcba_config[] = {
