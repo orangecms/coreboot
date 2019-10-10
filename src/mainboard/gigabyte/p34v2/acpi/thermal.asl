@@ -66,36 +66,6 @@ Scope (\_TZ)
 			Return (\PPKG ())
 		}
 
-		Method (_TMP, 0, Serialized)
-		{
-			// Get CPU Temperature from the Embedded Controller
-			Store (\_SB.PCI0.LPCB.EC0.CPUT, Local0)
-
-			// Re-read from EC if the temperature is very high to
-			// avoid OS shutdown if we got a bad reading.
-			If (LGreaterEqual (Local0, \TCRT)) {
-				Store (\_SB.PCI0.LPCB.EC0.CPUT, Local0)
-				If (LGreaterEqual (Local0, \TCRT)) {
-					// Check if this is an early read
-					If (LLess (CRDC, IRDC)) {
-						Store (0, Local0)
-					}
-				}
-			}
-
-			// Keep track of first few reads by the OS
-			If (LLess (CRDC, IRDC)) {
-				Increment (CRDC)
-			}
-
-			// Invalid reading, ensure fan is spinning
-			If (LGreaterEqual (Local0, 0x80)) {
-				Return (CTOK (\F4ON))
-			}
-
-			Return (CTOK (Local0))
-		}
-
 		Method (_AC0) {
 			If (LLessEqual (\FLVL, 0)) {
 				Return (CTOK (\F0OF))
