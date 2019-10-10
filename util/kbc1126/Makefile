@@ -1,4 +1,4 @@
-obj = kbc1126_ec_dump kbc1126_ec_insert
+obj = kbc1126_ec_dump kbc1126_ec_insert ec_insert
 HOSTCC := $(if $(shell type gcc 2>/dev/null),gcc,cc)
 
 all: $(obj)
@@ -7,6 +7,6 @@ all: $(obj)
 	$(HOSTCC) -Wall -o $@ $<
 
 clean:
-	rm -f kbc1126_ec_dump kbc1126_ec_insert
+	rm -f kbc1126_ec_dump kbc1126_ec_insert ec_insert
 
 .PHONY: all clean
