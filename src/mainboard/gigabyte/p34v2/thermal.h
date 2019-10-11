@@ -41,7 +41,7 @@
 #define CRITICAL_TEMPERATURE	100
 
 /* Temperature which OS will throttle CPU */
-#define PASSIVE_TEMPERATURE	90
+#define PASSIVE_TEMPERATURE	80
 
 /* Tj_max value for calculating PECI CPU temperature */
 #define MAX_TEMPERATURE		100
