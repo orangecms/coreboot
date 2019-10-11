@@ -1,5 +1,6 @@
 Category: laptop
 Board URL: https://www.gigabyte.com/Laptop/P34G-v2
+Board name: GA-R3456R
 ROM package: SOIC-8
 ROM protocol: SPI
 ROM socketed: n
