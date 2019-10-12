@@ -20,11 +20,10 @@ External (\PPKG, MethodObj)
 #define HAVE_THERMALZONE
 Scope (\_TZ)
 {
-        Name (ETMD, One)
 	ThermalZone (THRM)
 	{
-		Name (_TC1, 0x02)
-		Name (_TC2, 0x05)
+		Name (_TC1, 0x08)
+		Name (_TC2, 0x08)
 
 		// Ignore critical temps for the first few reads
 		// at boot to prevent unexpected shutdown
@@ -65,7 +64,7 @@ Scope (\_TZ)
 		{
 			Return (\PPKG ())
 		}
-
+/*
 		Method (_AC0) {
 			If (LLessEqual (\FLVL, 0)) {
 				Return (CTOK (\F0OF))
@@ -105,5 +104,6 @@ Scope (\_TZ)
 				Return (CTOK (\F4ON))
 			}
 		}
+*/
 	}
 }
