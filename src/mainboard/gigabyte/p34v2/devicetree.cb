@@ -1,18 +1,22 @@
 chip northbridge/intel/haswell # FIXME: check gfx.ndid and gfx.did
 	register "gfx.did" = "{ 0x80000100, 0x80000240, 0x80000410, 0x80000410, 0x00000005 }"
 	register "gfx.ndid" = "3"
-	register "gpu_cpu_backlight" = "0x00000000"
+
+	register "gpu_cpu_backlight" = "0x00000200"
+	register "gpu_pch_backlight" = "0x04000000"
+
 	register "gpu_ddi_e_connected" = "1"
-	register "gpu_dp_b_hotplug" = "0"
-	register "gpu_dp_c_hotplug" = "0"
-	register "gpu_dp_d_hotplug" = "0"
+	register "gpu_dp_b_hotplug" = "0x06"
+	register "gpu_dp_c_hotplug" = "0x00"
+	register "gpu_dp_d_hotplug" = "0x06"
 	register "gpu_panel_port_select" = "0"
-	register "gpu_panel_power_backlight_off_delay" = "0"
-	register "gpu_panel_power_backlight_on_delay" = "0"
-	register "gpu_panel_power_cycle_delay" = "0"
-	register "gpu_panel_power_down_delay" = "0"
-	register "gpu_panel_power_up_delay" = "0"
-	register "gpu_pch_backlight" = "0x00000000"
+
+	# register value in hex: 6h for 500ms, i.e., (6-1)*100 - power_off_time
+	register "gpu_panel_power_cycle_delay" = "6"            # T12
+	register "gpu_panel_power_up_delay" = "2000"            # T3
+	register "gpu_panel_power_down_delay" = "5000"          # T10
+	register "gpu_panel_power_backlight_on_delay" = "70"    # T7
+	register "gpu_panel_power_backlight_off_delay" = "2100" # T9
 
 	device cpu_cluster 0x0 on
 		chip cpu/intel/haswell
