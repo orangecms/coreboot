@@ -94,6 +94,25 @@ chip northbridge/intel/haswell # FIXME: check gfx.ndid and gfx.did
 			end
 			device pci 1f.0 on # LPC bridge PCI-LPC bridge
 				subsystemid 0x1458 0xa456
+				chip superio/ite/it8587e
+					# 0x4e according to superiotool.log
+					device pnp 4e.1 off end # UART 1
+					device pnp 4e.2 off end # UART 2
+					device pnp 4e.4 off end # sys wakeup
+					device pnp 4e.5 off end # mouse
+					device pnp 4e.6 on # keyboard FIXME: works?
+						io 0x60 = 0x60
+						io 0x62 = 0x64
+						irq 0x70 = 1
+						irq 0x72 = 12
+					end
+					device pnp 4e.f off end # shared mem
+					device pnp 4e.10 off end # RTC
+					device pnp 4e.11 off end # PM1
+					device pnp 4e.12 off end # PM2
+					device pnp 4e.13 off end # SPI
+					device pnp 4e.17 off end # PM3
+				end
 			end
 			device pci 1f.2 on # SATA Controller 1
 				subsystemid 0x1458 0xa456
