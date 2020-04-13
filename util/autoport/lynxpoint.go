@@ -226,14 +226,14 @@ func (b lynxpoint) Scan(ctx Context, addr PCIDevData) {
 	PutPCIDevParent(addr, "PCI-LPC bridge", "lpc")
 
 	DSDTIncludes = append(DSDTIncludes, DSDTInclude{
-		File: "southbridge/intel/lynxpoint/acpi/platform.asl",
+		File: "southbridge/intel/common/acpi/platform.asl",
 	})
 	DSDTIncludes = append(DSDTIncludes, DSDTInclude{
 		File:    "southbridge/intel/lynxpoint/acpi/globalnvs.asl",
 		Comment: "global NVS and variables",
 	})
 	DSDTIncludes = append(DSDTIncludes, DSDTInclude{
-		File: "southbridge/intel/lynxpoint/acpi/sleepstates.asl",
+		File: "southbridge/intel/common/acpi/sleepstates.asl",
 	})
 	DSDTPCI0Includes = append(DSDTPCI0Includes, DSDTInclude{
 		File: "southbridge/intel/lynxpoint/acpi/pch.asl",
@@ -483,6 +483,9 @@ func init() {
 
 	/* LAN Controller on LP PCH (if EEPROM has 0x0000/0xffff in DID) */
 	RegisterPCI(0x8086, 0x155a, GenericPCI{})
+
+	/* Intel Corporation Ethernet Connection I217-V */
+	RegisterPCI(0x8086, 0x153b, GenericPCI{})
 
 	/* SDIO */
 	RegisterPCI(0x8086, 0x9c35, GenericPCI{})
