@@ -1,0 +1,2 @@
+config VENDOR_FUJITSU
+	bool "FUJITSU"
