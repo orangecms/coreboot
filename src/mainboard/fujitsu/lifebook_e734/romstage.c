@@ -27,7 +27,10 @@ static const struct rcba_config_instruction rcba_config[] = {
 void mainboard_config_superio(void)
 {
 }
-
+// what happened to these?
+//	.wdbbar = 0x4000000,
+//	.wdbsize = 0x1000,
+// gone, see e8abb5ab8887969498f9953e76b7e0f4c68d3e47
 void mainboard_romstage_entry(void)
 {
 	struct pei_data pei_data = {
@@ -37,8 +40,6 @@ void mainboard_romstage_entry(void)
 		.epbar = DEFAULT_EPBAR,
 		.pciexbar = CONFIG_MMCONF_BASE_ADDRESS,
 		.smbusbar = SMBUS_IO_BASE,
-		.wdbbar = 0x4000000,
-		.wdbsize = 0x1000,
 		.hpet_address = HPET_ADDR,
 		.rcba = (uintptr_t)DEFAULT_RCBA,
 		.pmbase = DEFAULT_PMBASE,
