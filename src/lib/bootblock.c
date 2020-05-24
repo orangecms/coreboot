@@ -51,6 +51,7 @@ static void bootblock_main_with_timestamp(uint64_t base_timestamp,
 
 	if (CONFIG(BOOTBLOCK_CONSOLE)) {
 		console_init();
+		printk(BIOS_DEBUG, "Console ready.\n");
 		exception_init();
 	}
 
@@ -59,6 +60,9 @@ static void bootblock_main_with_timestamp(uint64_t base_timestamp,
 
 	timestamp_add_now(TS_END_BOOTBLOCK);
 
+	if (CONFIG(BOOTBLOCK_CONSOLE)) {
+		printk(BIOS_DEBUG, "Bootblock done.\n");
+	}
 	run_romstage();
 }
 

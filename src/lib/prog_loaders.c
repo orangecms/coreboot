@@ -41,12 +41,13 @@ int prog_locate(struct prog *prog)
 
 void run_romstage(void)
 {
+	if (CONFIG(BOOTBLOCK_CONSOLE))
+		printk(BIOS_DEBUG, "romstage checking...\n");
 	struct prog romstage =
 		PROG_INIT(PROG_ROMSTAGE, CONFIG_CBFS_PREFIX "/romstage");
 
 	vboot_run_logic();
 
-	printk(BIOS_DEBUG, "romstage checking...\n");
 	if (CONFIG(ARCH_X86) && CONFIG(BOOTBLOCK_NORMAL)) {
 		if (legacy_romstage_selector(&romstage))
 			goto fail;
@@ -64,7 +65,8 @@ void run_romstage(void)
 
 	console_time_report();
 
-	printk(BIOS_DEBUG, "romstage starting...\n");
+	if (CONFIG(BOOTBLOCK_CONSOLE))
+		printk(BIOS_DEBUG, "romstage starting...\n");
 	prog_run(&romstage);
 
 fail:

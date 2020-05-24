@@ -609,6 +609,8 @@ asmlinkage void exception_init(void)
 	int i;
 	uint16_t segment;
 
+	if (CONFIG(BOOTBLOCK_CONSOLE))
+		printk(BIOS_DEBUG, "Get cs...\n");
 	segment = get_cs();
 
 	/* Initialize IDT. */
@@ -622,5 +624,7 @@ asmlinkage void exception_init(void)
 #endif
 	}
 
+	if (CONFIG(BOOTBLOCK_CONSOLE))
+		printk(BIOS_DEBUG, "Load idt...\n");
 	load_idt(idt, sizeof(idt));
 }
