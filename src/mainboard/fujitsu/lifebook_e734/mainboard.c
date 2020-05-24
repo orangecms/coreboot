@@ -1,8 +1,22 @@
+/* SPDX-License-Identifier: GPL-2.0-only */
+
+#include <types.h>
+#include <acpi/acpi.h>
+#include <arch/io.h>
 #include <device/device.h>
+#include <southbridge/intel/lynxpoint/pch.h>
 #include <drivers/intel/gma/int15.h>
 #include <ec/acpi/ec.h>
 #include <console/console.h>
 #include <pc80/keyboard.h>
+
+void mainboard_suspend_resume(void)
+{
+	/* Call SMM finalize() handlers before resume */
+	outb(0xcb, 0xb2);
+}
+
+
 
 static void mainboard_init(struct device *dev)
 {
@@ -35,6 +49,9 @@ static void mainboard_init(struct device *dev)
 	}
 	pc_keyboard_init(NO_AUX_DEVICE);
 }
+
+// mainboard_enable is executed as first thing after
+// enumerate_buses().
 
 static void mainboard_enable(struct device *dev)
 {

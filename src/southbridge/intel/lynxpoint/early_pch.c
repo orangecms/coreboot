@@ -34,6 +34,7 @@ int pch_is_lp(void)
 
 static void pch_enable_bars(void)
 {
+	printk(BIOS_DEBUG, "Enable BARs...");
 	/* Setting up Southbridge. In the northbridge code. */
 	pci_write_config32(PCH_LPC_DEV, RCBA, (uintptr_t)DEFAULT_RCBA | 1);
 

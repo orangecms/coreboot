@@ -1,12 +1,15 @@
 /* SPDX-License-Identifier: GPL-2.0-only */
-/* This file is part of the coreboot project. */
 
 #include <stdint.h>
 #include <arch/romstage.h>
 #include <cpu/intel/haswell/haswell.h>
 #include <northbridge/intel/haswell/haswell.h>
+// TODO: taken from beltino
+//#include <northbridge/intel/haswell/raminit.h>
 #include <northbridge/intel/haswell/pei_data.h>
 #include <southbridge/intel/common/gpio.h>
+// TODO: taken from beltino
+//#include <southbridge/intel/lynxpoint/lp_gpio.h>
 #include <southbridge/intel/lynxpoint/pch.h>
 
 static const struct rcba_config_instruction rcba_config[] = {
@@ -19,6 +22,7 @@ static const struct rcba_config_instruction rcba_config[] = {
 	RCBA_SET_REG_16(D22IR, DIR_ROUTE(PIRQA, PIRQB, PIRQC, PIRQD)),
 	RCBA_SET_REG_16(D20IR, DIR_ROUTE(PIRQA, PIRQB, PIRQC, PIRQD)),
 
+	/* Disable unused devices (board specific) */
 	RCBA_RMW_REG_32(FD, ~0, PCH_DISABLE_ALWAYS),
 
 	RCBA_END_CONFIG,
@@ -45,12 +49,16 @@ void mainboard_romstage_entry(void)
 		.pmbase = DEFAULT_PMBASE,
 		.gpiobase = DEFAULT_GPIOBASE,
 		.temp_mmio_base = 0xfed08000,
-		.system_type = 1, /* desktop/server */
+		.system_type = 5, /* ULT */
 		.tseg_size = CONFIG_SMM_TSEG_SIZE,
 		/* note that SPD addresses are left-shifted by 1. */
 		.spd_addresses = { 0xa0, 0x00, 0xa4, 0x00 },
 		.ec_present = 0,
-		.gbe_enable = 0, /* FIXME: check this */
+		.gbe_enable = 0, // TODO
+		// 0 = leave channel enabled
+		// 1 = disable dimm 0 on channel
+		// 2 = disable dimm 1 on channel
+		// 3 = disable dimm 0+1 on channel
 		.dimm_channel0_disabled = 2,
 		.dimm_channel1_disabled = 2,
 		.max_ddr3_freq = 1600,
@@ -84,7 +92,7 @@ void mainboard_romstage_entry(void)
 	struct romstage_params romstage_params = {
 		.pei_data = &pei_data,
 		.gpio_map = &mainboard_gpio_map,
-		.rcba_config = rcba_config,
+		.rcba_config = &rcba_config[0],
 	};
 
 	romstage_common(&romstage_params);
