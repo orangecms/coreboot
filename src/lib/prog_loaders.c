@@ -46,6 +46,7 @@ void run_romstage(void)
 
 	vboot_run_logic();
 
+	printk(BIOS_DEBUG, "romstage checking...\n");
 	if (CONFIG(ARCH_X86) && CONFIG(BOOTBLOCK_NORMAL)) {
 		if (legacy_romstage_selector(&romstage))
 			goto fail;
@@ -63,6 +64,7 @@ void run_romstage(void)
 
 	console_time_report();
 
+	printk(BIOS_DEBUG, "romstage starting...\n");
 	prog_run(&romstage);
 
 fail:
